@@ -1,0 +1,156 @@
+
+<html>
+    <head>
+        
+            <script type="text/javascript">
+        function apply(x)     
+               
+         {           
+            var xhr= new XMLHttpRequest();
+              
+
+            var url = 'process.php?js_var='+x;
+            xhr.open('GET', url, false);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState===4 && xhr.status===200) {
+                   // alert(xhr.responseText);
+                    document.getElementById("p2").innerHTML=xhr.responseText;
+                }
+            }
+            xhr.send();
+                        return true;
+        }
+  
+            
+            function f1()
+            {
+             var x=document.getElementById("eid").value;
+             var y=/^[^0-9]{3,20}\@[a-z]{4,6}\.[a-z]{3}$/
+             if(x.match(y))
+             {
+                document.getElementById("p1").innerHTML="";
+             }
+             else
+             {
+                 document.getElementById("p1").innerHTML="invalid email id";
+             }
+            }
+            function f2()
+            {
+                var x=document.getElementById("cname").value;
+                var y=/^[a-z]{1,40}$/
+                if(x.match(y))
+                {
+                    document.getElementById("p1").innerHTML="";
+                }
+                else
+                    document.getElementById("p1").innerHTML="invalid cityname";
+            }
+            function f3()
+            {
+                var x=document.getElementById("staname").value;
+                var y=/^[a-z]{1,40}$/
+                if(x.match(y))
+                {
+                    document.getElementById("p1").innerHTML="";
+                }
+                else
+                    document.getElementById("p1").innerHTML="invalid statename";
+            }
+            </script>
+        <style>
+            input[type=text]:focus
+            {
+             border-color:red;  
+            }
+            input[type=password]:focus
+            {
+             border-color:red;  
+            }
+             h1
+            {
+                text-align:center;
+                color:white;
+                
+            }
+            body
+            {
+                color:white;
+                background-image: url("mypic.jpg");
+                background-repeat: no-repeat;
+            }
+            
+            
+                
+            
+            table
+            {
+                text-align:center;
+            }
+            </style>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div style="position:relative;top:200px;">
+
+        <h1>FOOD ORDERING APP</h1>
+        <form action="otp.php" method="GET">
+            <table align="center" border="1" width="2" cellspacing="1" cellpadding="3" >
+                
+                
+                <tbody>
+                    <tr>
+                        <td>email id:</td>
+                        <td><input type="text" name="eid" id="eid"></td>
+                    </tr>
+                    <tr>
+                        <td>login id:</td>
+                        <td><input type="text" name="id" id="id" onchange="apply(this.value)"></td>                      
+                    </tr>
+                    <tr>
+                            <td colspan="2"><p  style="color:red" id="p2">  </p></td>
+                            </tr>
+                    
+                    <tr>
+                        <td>password:</td>
+                        <td><input type="password" name="password" id="password" ></td>                      
+                    </tr>
+                    <tr>
+                        <td colspan="2" style=text-align:left>enter the address</td>
+                                             
+                    </tr>
+                    <tr>
+                        <td>house number</td>
+                        <td><input type="text" name="hno" id="hno"></td>                      
+                    </tr>
+                    <tr>
+                        <td>street name</td>
+                        <td><input type="text" name="sname" id="sname" ></td>                      
+                    </tr>
+                    <tr>
+                        <td>district name</td>
+                        <td><input type="text" name="dname" id="dname"></td>                      
+                    </tr>
+                    <tr>
+                        <td>city name</td>
+                        <td><input type="text" name="cname" id="cname" onchange="f2()"></td>                      
+                    </tr>
+                    <tr>
+                        <td>state name</td>
+                        <td><input type="text" name="staname" id="staname" onchange="f3()"></td>                      
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="submit" value="submit"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><p id="p1">  </p></td>
+                            </tr>
+                </tbody>
+            </table>
+
+        </form>
+        </div>
+    </body>
+</html>
